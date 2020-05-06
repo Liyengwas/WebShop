@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Product;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -14,7 +15,7 @@ class HomeController extends Controller
     public function __construct()
     {
         //Disable the auth middleware so that anyone can visit the home route
-        
+
         // $this->middleware('auth');
     }
 
@@ -25,6 +26,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        //import Products
+        $products = Product::take(15)->get();
+
+        return view('home', ['AllProducts' => $products]);
     }
 }
