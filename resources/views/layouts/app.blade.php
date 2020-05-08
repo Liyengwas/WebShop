@@ -18,6 +18,9 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <!--Font awesome-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+
 </head>
 <body>
     <div id="app">
@@ -39,13 +42,37 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
 
+                        <div class="container">
+                            <li class="nav-item row">
+
+                                <a class="nav-link btn btn-outline-primary" href="{{ route('cart.index') }}"><i class="fas fa-cart-plus"></i>Cart
+                                    <span class="badge badge-dark">
+                                     @auth
+                                        {{ Cart::session(auth()->id())->getContent()->count() }}
+                                        @else
+                                        0
+                                     @endauth
+                                    </span>
+                                </a>
+
+                                <!--badge to display total products-->
+                                {{-- <div class="badge badge-warning">
+
+                                </div> --}}
+
+
+                            </li>
+                        </div>
+
+
+
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                <a class="nav-link text-success" href="{{ route('login') }}">{{ __('Login') }}</a>
                             </li>
                             @if (Route::has('register'))
-                                <li class="nav-item">
+                                <li class="nav-item text-danger">
                                     <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                                 </li>
                             @endif
@@ -69,20 +96,6 @@
                             </li>
                         @endguest
 
-                        <div class="container">
-                            <li class="nav-item row">
-
-                                <a class="nav-link btn btn-info col-7" href="{{ route('cart.index') }}">Cart</a>
-
-                                <!--badge to display total products-->
-                                <div class="badge col-5">
-                                    Total Products:  {{ Cart::session(auth()->id())->getTotalQuantity() }}
-                                </div>
-
-
-                            </li>
-                        </div>
-                        
                     </ul>
                 </div>
             </div>
