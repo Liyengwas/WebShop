@@ -22,9 +22,9 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 //Add to cart route
 Route::get('/add-product/{product}', 'CartController@addProduct')->name('cart.add')->middleware('auth');
-//View Cart
+//View products Cart
 Route::get('/cart', 'CartController@index')->name('cart.index')->middleware('auth');
 //Remove Products from the Cart
 Route::get('/cart/destroy/{itemId}', 'CartController@destroy')->name('cart.destroy')->middleware('auth');
-//Update Cart
+//Update products in Cart
 Route::get('/cart/update/{itemId}', 'CartController@update')->name('cart.update')->middleware('auth');
