@@ -18,7 +18,7 @@
                         </div>
 
                         <div class="card-footer">
-                            <a href="#" class="btn btn-outline-success card-link">Add to Cart</a>
+                            <a href=" {{ route('cart.add', $product->id) }} " class="btn btn-outline-success card-link">Add to Cart</a>
                         </div>
                 </div>
             </div>

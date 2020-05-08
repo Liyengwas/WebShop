@@ -13,9 +13,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+//Redirect Users to homepage
+Route::redirect('/', '/home');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-//Redirect Users to homepage
-Route::redirect('/', '/home');
+//Add to cart route
+Route::get('/add-product/{product}', 'CartController@addProduct')->name('cart.add')->middleware('auth');
+//View Cart
+Route::get('/cart', 'CartController@index')->name('cart.index')->middleware('auth');
+//View Cart
+Route::get('/cart/destroy/{itemId}', 'CartController@destroy')->name('cart.destroy')->middleware('auth');
+//Update Cart
+Route::get('/cart/update/{itemId}', 'CartController@update')->name('cart.update')->middleware('auth');

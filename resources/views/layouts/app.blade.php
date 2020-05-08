@@ -38,6 +38,7 @@
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
+
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
@@ -67,12 +68,27 @@
                                 </div>
                             </li>
                         @endguest
+
+                        <div class="container">
+                            <li class="nav-item row">
+
+                                <a class="nav-link btn btn-info col-7" href="{{ route('cart.index') }}">Cart</a>
+
+                                <!--badge to display total products-->
+                                <div class="badge col-5">
+                                    Total Products:  {{ Cart::session(auth()->id())->getTotalQuantity() }}
+                                </div>
+
+
+                            </li>
+                        </div>
+                        
                     </ul>
                 </div>
             </div>
         </nav>
 
-        <main class="py-4">
+        <main class="py-4 container">
             @yield('content')
         </main>
     </div>
