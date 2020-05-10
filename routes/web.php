@@ -28,3 +28,5 @@ Route::get('/cart', 'CartController@index')->name('cart.index')->middleware('aut
 Route::get('/cart/destroy/{itemId}', 'CartController@destroy')->name('cart.destroy')->middleware('auth');
 //Update products in Cart
 Route::get('/cart/update/{itemId}', 'CartController@update')->name('cart.update')->middleware('auth');
+//Checkout products in Cart
+Route::get('/cart/checkout', 'CartController@checkOut')->name('cart.checkout')->middleware('auth');

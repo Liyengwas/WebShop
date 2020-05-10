@@ -59,7 +59,7 @@
                     </h3>
                 </div>
                 <div class="card-footer">
-                    <a href="#"><button class="btn btn-outline-success"><i class="fas fa-money-check-alt"></i> Proceed to Checkout</button> </a>
+                <a href="{{ route('cart.checkout') }} "><button class="btn btn-outline-success"><i class="fas fa-money-check-alt"></i> Proceed to Checkout</button> </a>
                 </div>
             </div>
         </div>
