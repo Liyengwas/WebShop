@@ -30,3 +30,6 @@ Route::get('/cart/destroy/{itemId}', 'CartController@destroy')->name('cart.destr
 Route::get('/cart/update/{itemId}', 'CartController@update')->name('cart.update')->middleware('auth');
 //Checkout products in Cart
 Route::get('/cart/checkout', 'CartController@checkOut')->name('cart.checkout')->middleware('auth');
+
+
+Route::resource('orders', 'OrderController')->middleware('auth');
